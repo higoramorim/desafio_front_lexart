@@ -1,6 +1,13 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 .div-form{
   border: 1px solid black;
   margin-top: 250px;
-  margin-left: 30%;
-  margin-right: 30%;
+  width: 800px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
+
