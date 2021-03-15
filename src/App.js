@@ -1,14 +1,19 @@
 import React from 'react';
-import Form from './component/Form'
-import RenderTable from './component/RenderTable'
+import Form from './component/Form';
+import RenderTable from './component/RenderTable';
+import { BrowserRouter as Router} from 'react-router-dom';
+// import Routes from './Routes';
+import ProductProvider from './context/ProductProvider';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <Router>
+    <ProductProvider>
       <Form />
       <RenderTable />
-    </div>
+    </ProductProvider>
+    </Router>
   );
 }
 

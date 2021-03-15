@@ -1,19 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { getProduct } from '../service/Api';
+import React, { useState, useEffect, useContext } from 'react';
+import productContext from  '../context/productContext';
+import { deleteProduct } from '../service/Api';
+import { handleShowProducts } from '../service/handleShowProducts'
+
+const handleDelete = async (id, setRefreshTable) => {
+  await deleteProduct(id)
+  setRefreshTable(true)
+  console.log(id)
+}
 
 const RenderTable = () => {
-  const [id, setId] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [product, setProduct] = useState('');
-  const [price, setPrice] = useState('');
-  const [client, setClient] = useState('');
-  const [active, setActive] = useState('');
-
-
+  const [products, setProducts] = useState([]);
+  const { refreshTable, setRefreshTable } = useContext(productContext)
+  console.log(refreshTable);
 
   useEffect(() => {
-    getProduct()
-  },[setId, setQuantity, setProduct, setPrice, setClient, setActive]);
+    handleShowProducts(refreshTable, setProducts)
+  },[products, refreshTable]);
+
+  useEffect(() => {
+   setRefreshTable(false)
+  },[products, setRefreshTable])
+  
+
   return(
     <>
       <tread>
@@ -27,13 +36,14 @@ const RenderTable = () => {
         </tr>
       </tread>
       <tbody>
+        {products.map((product) => (
         <tr>
-          <td>{id}</td>
-          <td>{quantity}</td>
-          <td>{product}</td>
-          <td>{price}</td>
-          <td>{client}</td>
-          <td>{active}</td>
+          <td>{product._id}</td>
+          <td>{product.quantity}</td>
+          <td>{product.product}</td>
+          <td>{product.price}</td>
+          <td>{product.client}</td>
+          <td>{product.active}</td>
           <td>
             <button 
             type="button"
@@ -44,11 +54,13 @@ const RenderTable = () => {
           <td>
             <button
             type="button"
+            onClick={() => handleDelete(product._id, setRefreshTable) }
             >
               Delete
             </button>
           </td>
         </tr>
+          ))}
       </tbody>
     </>
   )

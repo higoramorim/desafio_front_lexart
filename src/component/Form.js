@@ -1,32 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { addProduct } from '../service/Api';
+// import FormUpdate from './component/FormUpdate'
+import productContext from '../context/productContext';
 import './Form.css';
 
 const Form = () => {
-  const [id, setId] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [price, setPrice] = useState('');
-  const [product, setProduct] = useState('');
-  const [client, setClient] = useState('');
-  const [active, setActive] = useState('');
+  const {quantity, price, product, client, active, setQuantity, setPrice, setProduct, setClient, setActive, setRefreshTable
+  } = useContext(productContext);
 
   const onSubmit = (e) => {
     console.log('onsubmit')
     e.preventDefault()
-    addProduct({quantity, price, product, client, active })
+    addProduct({ quantity, price, product, client, active })
+    setRefreshTable(true)
   }
 
   return (
       <form>
-
-        <label style={{padding: '30px'}}>_Id</label>
-
-        <input 
-        type="text" 
-        name="text"
-        value={id}
-        onChange={(e) => setId(e.target.value)}
-        />
 
         <label style={{padding: '30px'}}>Quantity</label>
 
@@ -63,7 +53,7 @@ const Form = () => {
         <label style={{padding: '30px'}}>active</label>
 
         <input 
-        type="text" 
+        type="checkbox" 
         name="active"
         value={active}
         onChange={(e) => setActive(e.target.value)}/>
