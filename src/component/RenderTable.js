@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import productContext from  '../context/productContext';
 import { deleteProduct } from '../service/Api';
 import { handleShowProducts } from '../service/handleShowProducts'
+import './RenderTable.css';
 
 const handleDelete = async (id, setRefreshTable) => {
   await deleteProduct(id)
@@ -27,26 +28,27 @@ const RenderTable = () => {
     <>
       <tread>
         <tr>
-          <th>_id</th>
+          <th style={{width: '211px'}}>_id</th>
           <th>Quantity</th>
           <th>Product Name</th>
-          <th>Price</th>
-          <th>client</th>
+          <th style={{width: '50px'}}>Price</th>
+          <th style={{width: '100px'}}>client</th>
           <th>active</th>
         </tr>
       </tread>
-      <tbody>
+      <tbody> 
         {products.map((product) => (
-        <tr>
+        <tr key={product._id}>
           <td>{product._id}</td>
-          <td>{product.quantity}</td>
-          <td>{product.product}</td>
-          <td>{product.price}</td>
-          <td>{product.client}</td>
+          <td style={{width: '69px'}}>{product.quantity}</td>
+          <td style={{width: '108px'}}>{product.product}</td>
+          <td style={{width: '50px'}}>{product.price}</td>
+          <td style={{width: '100px'}}>{product.client}</td>
           <td>{product.active}</td>
           <td>
             <button 
             type="button"
+            onClick={() => console.log(product._id)}
             >
               Select
             </button>

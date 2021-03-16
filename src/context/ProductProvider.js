@@ -7,7 +7,7 @@ const ProductProvider = ({ children }) => {
   const [product, setProduct] = useState('');
   const [price, setPrice] = useState('');
   const [client, setClient] = useState('');
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState('inativo');
   const [refreshTable, setRefreshTable] = useState(true);
 
   const productValues = {

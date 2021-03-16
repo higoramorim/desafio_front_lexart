@@ -36,7 +36,7 @@ export async function getByIdProduct(id){
   await axios({
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
-    url: `${endpoint}${id}`,
+    url: `${endpoint}/${id}`,
     data:id
   })
 }
@@ -46,7 +46,7 @@ export async function updateProduct(id){
   await axios({
     method: 'GET',
     //headers: { 'Content-Type': 'application/json' },
-    url: `${endpoint}${id}`,
+    url: `${endpoint}/${id}`,
     data:id
   })
 }

@@ -18,45 +18,52 @@ const Form = () => {
   return (
       <form>
 
-        <label style={{padding: '30px'}}>Quantity</label>
-
+        <label style={{padding: '30px'}}>
+        Quantity
         <input 
         type="text" 
         name="quantity"
         value={quantity}
         onChange={(e) => setQuantity(e.target.value)}/>
+        </label>
 
-        <label style={{padding: '30px'}}>price</label>
-
+        <label style={{padding: '30px'}}>
+        price
         <input 
         type="text" 
         name="price"
         value={price}
         onChange={(e) => setPrice(e.target.value)}/>
+        </label>
 
-        <label style={{padding: '30px'}}>product</label>
-
+        <label style={{padding: '30px'}}>
+        product
         <input 
         type="text" 
         name="product" 
         value={product}
         onChange={(e) => setProduct(e.target.value)}/>
+        </label>
 
-        <label style={{padding: '30px'}}>client</label>
-
+        <label style={{padding: '30px'}}>
+        client
         <input 
         type="text" 
         name="client"
         value={client}
         onChange={(e) => setClient(e.target.value)}/>
+        </label>
 
-        <label style={{padding: '30px'}}>active</label>
-
+        <label style={{padding: '30px'}}>
+        active
         <input 
         type="checkbox" 
         name="active"
+        id="checkbox"
         value={active}
-        onChange={(e) => setActive(e.target.value)}/>
+        onChange={(e) => setActive(e.target.value)}
+        />
+        </label>
 
         <button 
         type="submit" 
